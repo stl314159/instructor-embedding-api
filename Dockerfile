@@ -1,14 +1,14 @@
-# FROM python:alpine3.18
 FROM python:latest
 WORKDIR /app
-COPY . .
 
+# Copy only requirements, to cache them in docker layer
+COPY requirements.txt .
 RUN pip install --upgrade pip
-# RUN pip freeze
 RUN pip install -r requirements.txt
 
-CMD ["python", "./index.py"]
+# Copy all other files
+COPY . .
 
-# ENV PORT=5000
+CMD ["python", "./index.py"]
 
 EXPOSE 5000
