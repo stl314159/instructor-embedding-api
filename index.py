@@ -12,7 +12,7 @@ CORS(app)
 app.config['DEBUG'] = True
 
 # Instantiate the default model outside the route
-default_model_name = 'hkunlp/instructor-xl'
+default_model_name = 'hkunlp/instructor-large'
 embedding_model = HuggingFaceInstructEmbeddings(model_name=default_model_name)
 
 @app.route("/v1/embeddings", methods=['POST'])
